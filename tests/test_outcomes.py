@@ -4,6 +4,7 @@ class TestOutcomes(unittest.TestCase):
 
     @classmethod
     def setUpClass(cls):
+        # This runs before each method call in this class
         cls.p1 = Player()
         cls.p1.setName("Alice")
         cls.p1.currentMove = Rock()
