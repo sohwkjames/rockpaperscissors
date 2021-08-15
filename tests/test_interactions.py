@@ -1,4 +1,8 @@
 import unittest
+from Rps.Interactions import *
+from Rps.Moves import *
+from Rps.Outcomes import *
+from Rps.Player import *
 
 class TestInteractions(unittest.TestCase):
 
@@ -16,7 +20,5 @@ class TestInteractions(unittest.TestCase):
         result = interactions.generatePlayers(bots=0, n=2) # expect 2 Players, 0 Bots
         self.assertIsInstance(result[0], BotPlayer)
         self.assertIsInstance(result[0], BotPlayer)
-
-
 
         
