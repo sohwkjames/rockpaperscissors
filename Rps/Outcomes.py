@@ -28,13 +28,13 @@ class Outcomes:
             return None
 
     def getResultString(self, player1, player2):
-        message = "{} has played {}. {} has played {}. ".format(player1.name, player1.move, player2.name, player2.move)
+        message = "{} has played {}. {} has played {}. ".format(player1.name, player1.move.name, player2.name, player2.move.name)
         winner = self.getWinner(player1, player2)
         if winner == None:
             message += "It is a draw game!"
             return message
         else:
-            message += "Winner is {}".format(winner.name)
+            message += "Winner is {}!".format(winner.name)
             return message
         
 

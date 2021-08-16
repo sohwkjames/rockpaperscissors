@@ -1,16 +1,48 @@
+import random
+
 class Player:
     def __init__(self):
         # move is a Move object.
-        self.name
-        self.move 
+        self.name = ""
+        self.move = 0
+    
+    def askForName(self):
+        pass
 
     def setName(self, name):
         self.name = name
 
-class HumanPlayer(Player):
-    def __init__(self):
+    def askForMove(self, moves):
         pass
+
+    def setMove(self, move):
+        self.move = move
+    
+class HumanPlayer(Player):
+    def askForName(self):
+        result = input("Please enter a name for this player")
+        return result
+    
+    def askForMove(self,moves):
+        print("Please choose a move")
+        i = 0
+        for move in moves:
+            print ("{}: {}".format(i, move.name))
+            i += 1
+        response = int(input())
+        return moves[response]
 
 class BotPlayer(Player):
     def __init__(self):
         pass
+
+    def askForName(self):
+        self.setName(self.generateBotName())
+
+    def askForMove(self, moves):
+        response = random.randint(0, len(moves)-1)
+        return moves[response]
+
+    def generateBotName(self):
+        return "Bot" + str(random.randint(1,100))
+

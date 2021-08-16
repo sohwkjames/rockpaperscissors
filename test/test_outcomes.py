@@ -1,8 +1,8 @@
 import unittest
-from Rps.Interactions import *
-from Rps.Moves import *
-from Rps.Outcomes import *
-from Rps.Player import *
+from Interactions import *
+from Moves import *
+from Outcomes import *
+from Player import *
 
 class TestOutcomes(unittest.TestCase):
 
@@ -11,11 +11,11 @@ class TestOutcomes(unittest.TestCase):
         # This runs before each test is run within this class.
         cls.p1 = Player()
         cls.p1.setName("Alice")
-        cls.p1.currentMove = Rock()
+        cls.p1.move = Rock()
         
         cls.p2 = Player()
         cls.p2.setName("Bob")
-        cls.p2.currentMove = Paper()
+        cls.p2.move = Paper()
 
         cls.outcomes = Outcomes()
 
@@ -35,11 +35,11 @@ class TestOutcomes(unittest.TestCase):
         result = self.outcomes.getWinner(self.p1, self.p2) 
         self.assertEqual(result, self.p2, "paper should beat rock")
 
-        self.p2.currentMove = Scissors()
+        self.p2.move = Scissors()
         result = self.outcomes.getWinner(self.p1, self.p2) 
-        self.assertEqual(result, self.p1, "paper should beat rock")
+        self.assertEqual(result, self.p1, "rock should beat scissors")
 
-        self.p2.currentMove = Rock()
+        self.p2.move = Rock()
         result = self.outcomes.getWinner(self.p1, self.p2) 
         self.assertEqual(result, None, "draw game should return None")
 
@@ -50,9 +50,6 @@ class TestOutcomes(unittest.TestCase):
         self.assertEqual(result, expected)
 
         self.p2.currentMove = Rock()
-        result = outcomes.getResultString(p1, p2)
+        result = self.outcomes.getResultString(self.p1, self.p2)
         expected = "Alice has played rock. Bob has played paper. It is a draw game!"
         
-
-    
-
