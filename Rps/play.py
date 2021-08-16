@@ -17,9 +17,8 @@ while continueGame:
     allMoves = MoveList.MoveList().getAllMoves()
 
     players = interactions.generatePlayers(bots=choice, n=2)
+    print(players[0].name)
     interactions.askForNames(players)
-    for p in players:
-        print(p.name)
     interactions.askForMoves(players, allMoves)
 
     # compute outcome and display result

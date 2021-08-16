@@ -14,7 +14,7 @@ class Interactions:
             result.append(BotPlayer())
         return result
     
-    def askForNames(self, players):    
+    def askForNames(self, players):
         for p in players:
             name = p.askForName()
             p.setName(name)

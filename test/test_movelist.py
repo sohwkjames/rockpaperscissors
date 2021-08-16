@@ -1,17 +1,12 @@
 import unittest
-from Interactions import *
-from Moves import *
-from Outcomes import *
-from Player import *
-from MoveList import *
-
+from Rps import Interactions, Player, MoveList, Outcomes, Moves
 
 class TestMovelist(unittest.TestCase):
 
     def test_getAllMoves(self):
-        movelist = MoveList()
+        movelist = MoveList.MoveList()
         result = movelist.getAllMoves()
-        expected = [Rock(), Paper(), Scissors()]
-        self.assertIsInstance(result[0], Rock)
-        self.assertIsInstance(result[1], Paper)
-        self.assertIsInstance(result[2], Scissors)
+        expected = [Moves.Rock(), Moves.Paper(), Moves.Scissors()]
+        self.assertIsInstance(result[0], Moves.Rock)
+        self.assertIsInstance(result[1], Moves.Paper)
+        self.assertIsInstance(result[2], Moves.Scissors)

@@ -1,9 +1,8 @@
 import unittest
-from Interactions import *
-from Moves import *
-from Outcomes import *
-from Player import *
-from MoveList import *
+from unittest import patch
+from unittest.mock import MagicMock
+
+from Rps import Interactions, Player, MoveList, Outcomes, Moves
 
 class TestPlayer(unittest.TestCase):
 
@@ -12,20 +11,29 @@ class TestPlayer(unittest.TestCase):
         pass
 
     def test_setName(self):
-        p = HumanPlayer()
+        p = Player.HumanPlayer()
         p.setName("Fred flintstone")
         self.assertEqual(p.name, "Fred flintstone")
 
+    def test_generateBotName(self):
+        p = Player.BotPlayer()
+        result = p.generateBotName()
+        firstChars = result[0:3]
+        self.assertEqual(firstChars, "Bot")
+    
     def test_botName(self):
-        p = BotPlayer()
+        p = Player.BotPlayer()
         p.askForName()
         # Check that bot name starts with "Bot"
         firstChars = p.name[0:3]
         self.assertEqual(firstChars, "Bot")
 
-    def test_HumanAskForMove(self):
-        moves = MoveList()
-        moveList = moves.getAllMoves()
-        p = HumanPlayer()
-        p.askForMove(moveList)
+        
+    
+    # @MagicMock.patch('builtins.input', side_effect=['1'])
+    # def test_HumanAskForMove(self):
+    #         moves = MoveList.MoveList()
+    #         moveList = moves.getAllMoves()
+    #         p = Player.HumanPlayer()
+    #         p.askForMove(moveList)
 

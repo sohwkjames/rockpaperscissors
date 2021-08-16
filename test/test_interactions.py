@@ -1,9 +1,6 @@
 import unittest
-from Rps import Interactions
-from Rps import Player
+from Rps import Interactions, Player, MoveList, Outcomes, Moves
 
-interactions = Interactions()
-print(interactions)
 
 class TestInteractions(unittest.TestCase):
 
@@ -13,11 +10,11 @@ class TestInteractions(unittest.TestCase):
         pass
 
     def test_generatePlayers(self):
-        interactions = Interactions()
+        interactions = Interactions.Interactions()
         result = interactions.generatePlayers(bots=1, n=2) # expect 2 Players, 0 Bots
-        self.assertIsInstance(result[0], HumanPlayer)
-        self.assertIsInstance(result[1], BotPlayer)
+        self.assertIsInstance(result[0], Player.HumanPlayer)
+        self.assertIsInstance(result[1], Player.BotPlayer)
 
         result = interactions.generatePlayers(bots=2, n=2) # expect 2 Players, 0 Bots
-        self.assertIsInstance(result[0], BotPlayer)
-        self.assertIsInstance(result[1], BotPlayer)
+        self.assertIsInstance(result[0], Player.BotPlayer)
+        self.assertIsInstance(result[1], Player.BotPlayer)

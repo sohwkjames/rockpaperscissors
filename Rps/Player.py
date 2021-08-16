@@ -20,7 +20,7 @@ class Player:
     
 class HumanPlayer(Player):
     def askForName(self):
-        result = input("Please enter a name for this player")
+        result = input("Please enter a name for this player \n")
         return result
     
     def askForMove(self,moves):
@@ -33,11 +33,8 @@ class HumanPlayer(Player):
         return moves[response]
 
 class BotPlayer(Player):
-    def __init__(self):
-        pass
-
     def askForName(self):
-        self.setName(self.generateBotName())
+        return self.generateBotName()
 
     def askForMove(self, moves):
         response = random.randint(0, len(moves)-1)
